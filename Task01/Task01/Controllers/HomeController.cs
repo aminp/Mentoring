@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Task01.DBContext;
+using Task01.Models;
 
 namespace Task01.Controllers
 {
@@ -10,20 +13,18 @@ namespace Task01.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+           return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
+            ViewBag.Message = "Description Page.";
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
+            ViewBag.Message = "Contact Page.";
             return View();
         }
     }
