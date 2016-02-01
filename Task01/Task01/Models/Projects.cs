@@ -14,10 +14,10 @@ namespace Task01.Models
 
     public class Project
     {
+        [Key]
+        public int? ProjectID { get; set; }
 
-        public int ProjectID { get; set; }
-
-        [DisplayName("Number of Developers")]
+        [DisplayName("Developer(s)")]
         public int DeveloperCount { get; set; }
 
         [DisplayName("Project Title")]
@@ -37,6 +37,7 @@ namespace Task01.Models
         public DateTime? FinishedDate { get; set; }
 
         [DisplayName("Project Status")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public Status? ProjectStatus { get; set; }
     }
 }

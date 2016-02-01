@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Task01.Models;
 
-namespace Task01.DBContext
+namespace Task01.Security
 {
     public class DBHelper : IDisposable
     {

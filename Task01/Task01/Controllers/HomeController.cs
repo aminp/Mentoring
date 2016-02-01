@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Task01.DBContext;
+using Task01.Security;
 using Task01.Models;
 
 namespace Task01.Controllers
@@ -13,7 +13,9 @@ namespace Task01.Controllers
     {
         public ActionResult Index()
         {
-           return View();
+            var db = new ProjectsContext();
+       
+           return View(db.Projects.AsEnumerable());
         }
 
         public ActionResult About()
@@ -25,6 +27,23 @@ namespace Task01.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Contact Page.";
+            return View();
+        }
+
+        public ActionResult RemoveAll()
+        {
+            int i = 0;
+            using(var db = new ProjectsContext())
+            {
+                foreach(var item in db.Projects.ToList())
+                {
+                    db.Projects.Remove(item);
+                    i++;
+                }
+                db.SaveChanges();
+            }
+
+            ViewBag.Message = i + " projects are removed.";
             return View();
         }
     }
